@@ -1,0 +1,98 @@
+.logo-img {
+    height: 30px;
+}
+
+.banner {
+    background-image: url(../images/Music_Concert\ -2.jpg);
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow:
+        inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.3)
+}
+
+#h1-banner {
+    color: white;
+}
+
+.a-nav {
+    font-weight: 500;
+}
+
+.a-nav:hover {
+    font-weight: 600;
+    color: white;
+    background-color: rgb(190, 40, 40);
+}
+
+body {
+    background-color: rgb(236, 236, 236);
+}
+
+.card-img-top {
+    box-shadow:
+        inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.3)
+}
+
+.card {
+    box-shadow:
+        0 -3em 3em rgba(0, 0, 0, 0.1),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.3)
+}
+
+.card-modal {
+    max-width: 540px;
+}
+
+.social-media {
+    width: 40px;
+}
+
+.btn {
+    background-color: rgb(203, 27, 27);
+    color: white;
+    border: solid rgb(203, 27, 27) 2px;
+}
+
+.btn:hover {
+    background-color: rgb(138, 8, 8);
+    color: white;
+}
+
+.footer-size {
+    width: 30px;
+    height: 24px
+}
+
+.badge {
+    width: 35%;
+}
+
+.card-img-top {
+    height: 220px;
+}
+
+.footer{
+    display: flex;
+}
+@media only screen and (max-width: 380px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+
+    }
+}
+
+tr{
+    font-weight: bold;
+    width: 100px;
+}
+
+.table>:not(caption)>*>* {
+    width: 30%;
+    text-align: center;
+}

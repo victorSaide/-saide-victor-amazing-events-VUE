@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <title>Amazing Events</title>
+</head>
+
+<body>
+    <!-- header: logo, nav, banner -->
+    <header>
+        <!-- nav, logo -->
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary p-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img class="logo-img" src="./assets/images/logo.png" alt="logo-amazing-events">
+                </a>
+                <nav class="justify-content-end">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link outline-primary a-nav" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link outline-primary a-nav" href="./upcoming-events.html">Upcoming
+                                    Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link outline-primary a-nav" href="./past-events.html">Past Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link outline-primary a-nav" href="./contact-us.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link outline-primary a-nav" href="./stats.html">Stats</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        <!-- banner -->
+        <div class="banner d-flex align-items-center justify-content-around">
+            <h1 class="display-1" id="h1-banner">Home</h1>
+        </div>
+    </header>
+    <!-- main: checkbox, search bar, cards -->
+    <main>
+        <div id="app">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="d-flex justify-content-around align-items-center flex-wrap py-4 col-xs-12 col-sm-12 col-md-8 col-lg-8"
+                        id="check-box-container">
+                        <!-- checkboxes are created dinamicaly -->
+                        <template v-if="categories" v-for="category of categories">
+                            <div class="form-check px-3 d-flex justify-content-evenly">
+                                <label class="form-check-label">{{category}}
+                                    <input class="form-check-input" :value="category" type="checkbox" name="" id="" v-on:change="filter">
+                                </label>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- search -->
+                    <div class="d-flex justify-content-around py-3 h-100 col-xs-12 col-sm-12 col-md-4 col-lg-4"
+                        id="searchBar">
+                        <form class="d-flex col-md-8 col-xs-12 col-sm-12" role="search">
+                            <input id="input-form" class="form-control me-2" type="search" placeholder="Search"
+                                aria-label="Search" v-on:change="filter">
+                            <button class="btn btn-outline-danger" type="submit" title="search">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bootstrap-reboot" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 1 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.812 6.812 0 0 0 1.16 8z" />
+                                    <path
+                                        d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6z" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- ======================================== cards ======================================== -->
+            <div class="container-fluid">
+                <!-- dinamic cards -->
+                <div class="row justify-content-evenly" id="container">
+                    <template v-for="event in events">
+                        <div
+                            class="card d-flex col-xl-3 p-3 m-2 col-lg-3 p-3 m-2 col-md-5 p-3 m-2 col-sm-10 col-xs-10 p-2">
+                            <img v-bind:src="event.image" class="card-img-top object-fit-cover"
+                                :alt="'Imagen de '+event.name">
+                            <div class="card-body p-1">
+                                <h5 class="card-title pt-2">{{event.name}}</h5>
+                                <p class="card-text">{{event.description}}</p>
+                                <div class="d-flex align-items-center justify-content-evenly">
+                                    <span
+                                        class="badge text-bg-secondary p-3 align-items-center">${{event.price}},00</span>
+                                    <a :href="'./details.html?id=' + event._id" class="btn w-50 p-2">
+                                        Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <!-- footer: social left right, text "Cohort" right -->
+    <footer class="footer d-flex flex-wrap justify-content-around align-items-center py-3 mt-4 border-top bg-dark"
+        data-bs-theme="dark">
+        <ul class="nav col-md-4 justify-content-start list-unstyled d-flex">
+            <li class="ms-3">
+                <a href="https://www.instagram.com" target="blank"><img class="social-media"
+                        src="./assets/images/icons8-instagram-96.png" alt="instagram"></a>
+            </li>
+            <li class="ms-3">
+                <a href="https://es-la.facebook.com/" target="blank"><img class="social-media"
+                        src="./assets/images/icons8-facebook-96.png" alt="facebook"></a>
+            </li>
+            <li class="ms-3">
+                <a href="https://www.whatsapp.com/" target="blank"><img class="social-media"
+                        src="./assets/images/icons8-whatsapp-96.png" alt="whatsapp"></a>
+            </li>
+        </ul>
+        <div class="col-md-4 d-flex align-items-center justify-content-end">
+            <a href="./index.html" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1" title="footer">
+                <svg class="bi footer-size">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">Cohort FE08-TN</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
