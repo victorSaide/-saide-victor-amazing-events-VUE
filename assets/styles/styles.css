@@ -8,7 +8,7 @@ main{
 }
 
 .banner {
-    background-image: url(../images/Music_Concert\ -2.jpg);
+    background-image: url(../images/concert.jpg);
     height: 150px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -20,6 +20,7 @@ main{
 
 #h1-banner {
     color: white;
+    text-align: center;
 }
 
 .a-nav {
@@ -33,7 +34,7 @@ main{
 }
 
 body {
-    background-color: rgb(207, 226, 239);
+    background-color: #f3f2ef;
 }
 
 .card-img-top {
