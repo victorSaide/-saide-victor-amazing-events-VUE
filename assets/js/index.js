@@ -4,7 +4,10 @@ createApp({
     data() {
         return {
             events: undefined,
-            categories: undefined
+            categories: undefined,
+            filteredEvents: [],
+            valueSearch: '',
+            checked: []
         }
     },
     created() {
@@ -12,6 +15,7 @@ createApp({
             .then(res => res.json())
             .then(data => {
                 this.events = data.events.filter(event => event.category)
+                this.filteredEvents = this.events
                 this.categories = [... new Set(this.events.map(event => event.category))]
                 console.log(this.categories)
             } )
@@ -19,7 +23,10 @@ createApp({
     },
     methods: {
         filter(){
-            console.log('filtrado')
+            this.filteredEvents = this.events.filter(event => {
+                return (this.checked.includes(event.category) || this.checked.length === 0) 
+                && event.name.toLowerCase().includes(this.valueSearch.toLowerCase())
+            })
         }
     },
     computed: {

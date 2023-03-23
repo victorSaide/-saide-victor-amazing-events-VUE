@@ -65,7 +65,7 @@
                         <template v-if="categories" v-for="category of categories">
                             <div class="form-check px-3 d-flex justify-content-evenly">
                                 <label class="form-check-label">{{category}}
-                                    <input class="form-check-input" :value="category" type="checkbox" name="" id="" v-on:change="filter">
+                                    <input class="form-check-input" :value="category" type="checkbox" name="" id="" v-on:change="filter" v-model="checked">
                                 </label>
                             </div>
                         </template>
@@ -75,7 +75,7 @@
                         id="searchBar">
                         <form class="d-flex col-md-8 col-xs-12 col-sm-12" role="search">
                             <input id="input-form" class="form-control me-2" type="search" placeholder="Search"
-                                aria-label="Search" v-on:change="filter">
+                                aria-label="Search" v-on:keyup="filter" v-model="valueSearch">
                             <button class="btn btn-outline-danger" type="submit" title="search">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bootstrap-reboot" viewBox="0 0 16 16">
@@ -93,7 +93,7 @@
             <div class="container-fluid">
                 <!-- dinamic cards -->
                 <div class="row justify-content-evenly" id="container">
-                    <template v-for="event in events">
+                    <template v-for="event of filteredEvents" v-if="filteredEvents.length > 0">
                         <div
                             class="card d-flex col-xl-3 p-3 m-2 col-lg-3 p-3 m-2 col-md-5 p-3 m-2 col-sm-10 col-xs-10 p-2">
                             <img v-bind:src="event.image" class="card-img-top object-fit-cover"
@@ -111,12 +111,16 @@
                             </div>
                         </div>
                     </template>
+                    <template v-else>
+                        <div>
+                            <h2 class="text-center py-3">There is no results for this search</h2>
+                        </div>
+                    </template>
                 </div>
-
             </div>
         </div>
     </main>
-    <!-- footer: social left right, text "Cohort" right -->
+    <!-- footer -->
     <footer class="footer d-flex flex-wrap justify-content-around align-items-center py-3 mt-4 border-top bg-dark"
         data-bs-theme="dark">
         <ul class="nav col-md-4 justify-content-start list-unstyled d-flex">

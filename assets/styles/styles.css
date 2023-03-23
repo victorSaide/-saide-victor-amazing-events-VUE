@@ -1,3 +1,8 @@
+main{
+    min-height: 60vh;
+    grid-template-rows: auto 1fr auto;
+}
+
 .logo-img {
     height: 30px;
 }
@@ -28,7 +33,7 @@
 }
 
 body {
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(207, 226, 239);
 }
 
 .card-img-top {
@@ -95,4 +100,26 @@ tr{
 .table>:not(caption)>*>* {
     width: 30%;
     text-align: center;
+}
+
+.p-msg {
+    background-color: #cb1b1b;
+    padding: 5vh;
+    width: 90%;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 3vh;
+    color: white;
+    font-weight: bold;
+}
+
+.goBack{
+    background-image: url('https://icons8.com/icon/39977/go-back');
+    height: 100px;
+    background-color: #cb1b1b;
+}
+
+button > a {
+    text-decoration: none;
+    color: antiquewhite;
 }
