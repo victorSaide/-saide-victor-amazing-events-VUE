@@ -123,3 +123,11 @@ button > a {
     text-decoration: none;
     color: antiquewhite;
 }
+
+#input-form{
+    height: 50px;
+}
+
+.reset{
+    height: 50px;
+}

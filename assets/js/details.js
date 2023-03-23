@@ -16,9 +16,9 @@ fetch(urlApi)
 
         function showCardsDetails() {
             let card = document.createElement('div');
-            card.className = "card d-flex col-xl-7 p-3 m-2 col-lg-3 p-3 m-2 col-md-5 p-3 m-2 col-sm-10 col-xs-10 p-2";
+            card.className = "card d-flex col-xl-10 p-3 m-2 col-lg-10 p-3 m-2 col-md-10 p-3 m-2 col-sm-10 m-2 col-xs-10";
             card.innerHTML = `
-        <img src="${element.image}" class="object-fit-cover p-3" alt="events">
+        <img src="${element.image}" class="object-fit-cover p-1" alt="events">
         <div class="card-body p-1">
             <h4 class="card-title p-2">${element.name}</h4>
             <p class="fs-6 p-2">${element.description}</p>
